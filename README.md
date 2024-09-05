@@ -2,7 +2,11 @@
 
 Draft Handling for abap2UI5
 
-WIP
+Work in progress... 🚧 🏗️ 🦺
+
+#### Dependencies
+* abap2UI5
+* websocket-feature
 
 ### Personal Draft
 Continue your App with your last changes
