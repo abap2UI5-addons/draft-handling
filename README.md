@@ -8,11 +8,4 @@ Work in progress... 🚧 🏗️ 🦺
 * abap2UI5
 * websocket-feature
 
-### Personal Draft
-Continue your App with your last changes
-
-
-### Collaborative Draft
-Work together on the same App in a single draft
-
 
