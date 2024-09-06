@@ -59,7 +59,9 @@ CLASS z2ui5add_cl_cc_bind_upd IMPLEMENTATION.
       `         var model = sap.z2ui5.oView.getModel();` && |\n|  &&
       `var binding = new sap.ui.model.Binding(model, oControl.getProperty("path") , model.getContext( oControl.getProperty("path") ) );` && |\n|  &&
       `binding.attachChange(function() {` && |\n|  &&
-      `       ` && |\n|  &&
+      `    if ( sap.z2ui5?.isWSactive == true ){ return; }; ` && |\n|  &&
+      `     sap.z2ui5.isWSactive = true;  ` && |\n|  &&
+      `     setTimeout( () => { sap.z2ui5.isWSactive = false; } , 2000 );  ` && |\n|  &&
      `       if ( sap.z2ui5.modelbackup ) { if (  sap.z2ui5.modelbackup === JSON.stringify( sap.z2ui5.oView.getModel().oData.XX.QUANTITY ) ) { return; } }` && |\n|  &&
       `       if ( sap.z2ui5.isBusy == true ){ return; } oControl.fireChanged();` && |\n|  &&
       `     sap.z2ui5.modelbackup = JSON.stringify( sap.z2ui5.oView.getModel().oData.XX.QUANTITY ); ` && |\n|  &&

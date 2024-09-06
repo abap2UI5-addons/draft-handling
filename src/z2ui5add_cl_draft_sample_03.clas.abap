@@ -9,6 +9,7 @@ CLASS z2ui5add_cl_draft_sample_03 DEFINITION PUBLIC.
     DATA check_initialized TYPE abap_bool.
     DATA mv_new_draft_id TYPE string.
     DATA message TYPE string.
+    DATA mv_update_active TYPE abap_bool.
 
   PROTECTED SECTION.
 
@@ -107,12 +108,12 @@ CLASS z2ui5add_cl_draft_sample_03 IMPLEMENTATION.
     ENDIF.
 
     TRY.
-        IF mv_new_draft_id IS NOT INITIAL.
-          mo_last_draft = NEW  z2ui5add_cl_draft_srv( )->collaborative_load( 'MY_DRAFT_TEST' ).
-          client->nav_app_leave( mo_last_draft ).
-          CLEAR mv_new_draft_id.
-          RETURN.
-        ENDIF.
+*        IF mv_new_draft_id IS NOT INITIAL.
+*          mo_last_draft = NEW  z2ui5add_cl_draft_srv( )->collaborative_load( 'MY_DRAFT_TEST' ).
+*          client->nav_app_leave( mo_last_draft ).
+*          CLEAR mv_new_draft_id.
+*          RETURN.
+*        ENDIF.
         "check if popup was active, if yes and answer is yes -> go to last draft
         DATA(lo_prev) = CAST z2ui5_cl_pop_to_confirm( client->get_app( client->get(  )-s_draft-id_prev_app ) ).
         DATA(lv_confirm_result) = lo_prev->result( ).
@@ -143,12 +144,17 @@ CLASS z2ui5add_cl_draft_sample_03 IMPLEMENTATION.
         IF lo_last_draft->quantity = quantity.
           RETURN.
         ENDIF.
-        CAST z2ui5add_cl_draft_sample_03( lo_last_draft )->message = `Draft updated!`.
+         lo_last_draft->message = `Draft updated!`.
+         lo_last_draft->mv_update_active = abap_true.
         client->nav_app_leave( lo_last_draft ).
         CLEAR mv_new_draft_id.
         RETURN.
 
       WHEN 'DATA_CHANGED'.
+*        IF mv_update_active = abap_true.
+*          mv_update_active = abap_false.
+*          RETURN.
+*        ENDIF.
         CLEAR mv_new_draft_id.
         NEW  z2ui5add_cl_draft_srv( )->collaborative_save(
           id   = client->get( )-s_draft-id
