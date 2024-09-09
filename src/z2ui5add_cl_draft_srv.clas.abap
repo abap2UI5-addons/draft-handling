@@ -53,7 +53,7 @@ CLASS z2ui5add_cl_draft_srv IMPLEMENTATION.
           WHERE id = @lv_id
           INTO @lv_id_next.
 
-        DATA(lo_result) = NEW z2ui5_cl_core_draft_srv( )->read_draft( lv_id_next ).
+*        DATA(lo_result) = NEW z2ui5_cl_core_draft_srv( )->read_draft( lv_id_next ).
         DATA(lo_app) = z2ui5_cl_core_app=>db_load( lv_id_next ).
         result = CAST #( lo_app->mo_app ).
 
@@ -80,7 +80,7 @@ CLASS z2ui5add_cl_draft_srv IMPLEMENTATION.
           WHERE id = @lv_id
           INTO @lv_id_next.
 
-        DATA(lo_result) = NEW z2ui5_cl_core_draft_srv( )->read_draft( lv_id_next ).
+*        DATA(lo_result) = NEW z2ui5_cl_core_draft_srv( )->read_draft( lv_id_next ).
         DATA(lo_app) = z2ui5_cl_core_app=>db_load( lv_id_next ).
         result = CAST #( lo_app->mo_app ).
 
