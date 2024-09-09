@@ -47,10 +47,11 @@ CLASS z2ui5add_cl_draft_srv IMPLEMENTATION.
              result = lv_id
          ).
 
+        DATA lv_id_next TYPE string.
         SELECT SINGLE id
           FROM z2ui5_t_01
           WHERE id = @lv_id
-          INTO @DATA(lv_id_next).
+          INTO @lv_id_next.
 
         DATA(lo_result) = NEW z2ui5_cl_core_draft_srv( )->read_draft( lv_id_next ).
         DATA(lo_app) = z2ui5_cl_core_app=>db_load( lv_id_next ).
@@ -73,10 +74,11 @@ CLASS z2ui5add_cl_draft_srv IMPLEMENTATION.
              result = lv_id
          ).
 
+        DATA lv_id_next TYPE string.
         SELECT SINGLE id
           FROM z2ui5_t_01
           WHERE id = @lv_id
-          INTO @DATA(lv_id_next).
+          INTO @lv_id_next.
 
         DATA(lo_result) = NEW z2ui5_cl_core_draft_srv( )->read_draft( lv_id_next ).
         DATA(lo_app) = z2ui5_cl_core_app=>db_load( lv_id_next ).
