@@ -76,9 +76,9 @@ CLASS z2ui5add_cl_draft_sample_03 IMPLEMENTATION.
                      )->input( client->_bind_edit( quantity )
                      )->label( `product`
                      )->input( value = product
-                     )->button(
-                         text  = 'save draft'
-                         press = client->_event( val = 'DATA_CHANGED' )
+*                     )->button(
+*                         text  = 'save draft'
+*                         press = client->_event( val = 'DATA_CHANGED' )
           )->stringify( ) ).
 
   ENDMETHOD.
