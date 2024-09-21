@@ -102,7 +102,7 @@ CLASS z2ui5add_cl_draft_sample_02 IMPLEMENTATION.
 
     IF message IS NOT INITIAL.
       client->message_toast_display( message ).
-      clear message.
+      CLEAR message.
     ENDIF.
 
     TRY.
@@ -136,7 +136,7 @@ CLASS z2ui5add_cl_draft_sample_02 IMPLEMENTATION.
 
       WHEN 'WS_MESSAGE_RECEIVED'.
         mo_last_draft = NEW  z2ui5add_cl_draft_srv( )->collaborative_load( 'MY_DRAFT_TEST' ).
-        cast z2ui5add_cl_draft_sample_02( mo_last_draft )->message = `Draft updated!`.
+        CAST z2ui5add_cl_draft_sample_02( mo_last_draft )->message = `Draft updated!`.
         client->nav_app_leave( mo_last_draft ).
         CLEAR mv_new_draft_id.
 *        client->message_toast_display( `Draft updated!` ).
