@@ -38,7 +38,7 @@ CLASS z2ui5add_cl_draft_srv IMPLEMENTATION.
     TRY.
         DATA(lv_id) = ``.
 
-        z2ui5_cl_util=>db_load_by_handle(
+        z2ui5add_cl_var_db_api=>hlp_db_load_by_handle(
          EXPORTING
             handle       = 'DRAFT_LOGIC'
             handle2      = name
@@ -65,7 +65,7 @@ CLASS z2ui5add_cl_draft_srv IMPLEMENTATION.
     TRY.
         DATA(lv_id) = ``.
 
-        z2ui5_cl_util=>db_load_by_handle(
+        z2ui5add_cl_var_db_api=>hlp_db_load_by_handle(
          EXPORTING
             handle       = 'DRAFT_LOGIC'
             handle2      = name
@@ -90,7 +90,7 @@ CLASS z2ui5add_cl_draft_srv IMPLEMENTATION.
 
   METHOD personal_save.
 
-    z2ui5_cl_util=>db_save(
+    z2ui5add_cl_var_db_api=>hlp_db_save(
          handle       = 'DRAFT_LOGIC'
          handle2      = name
          handle3      = z2ui5_cl_util=>context_get_user_tech( )
@@ -102,7 +102,7 @@ CLASS z2ui5add_cl_draft_srv IMPLEMENTATION.
 
   METHOD collaborative_save.
 
-    z2ui5_cl_util=>db_save(
+    z2ui5add_cl_var_db_api=>hlp_db_save(
          handle       = 'DRAFT_LOGIC'
          handle2      = name
 *         handle3      = z2ui5_cl_util=>context_get_user_tech( )
