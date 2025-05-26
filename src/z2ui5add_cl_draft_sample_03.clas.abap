@@ -6,7 +6,6 @@ CLASS z2ui5add_cl_draft_sample_03 DEFINITION PUBLIC.
 
     DATA product  TYPE string.
     DATA quantity TYPE string.
-    DATA check_initialized TYPE abap_bool.
     DATA mv_new_draft_id TYPE string.
     DATA message TYPE string.
     DATA mv_update_active TYPE abap_bool.
@@ -33,8 +32,7 @@ CLASS z2ui5add_cl_draft_sample_03 IMPLEMENTATION.
 
     me->client = client.
 
-    IF check_initialized = abap_False.
-      check_initialized = abap_true.
+    IF client->check_on_init( ).
       on_init(  ).
       RETURN.
     ENDIF.
@@ -67,8 +65,8 @@ CLASS z2ui5add_cl_draft_sample_03 IMPLEMENTATION.
     client->view_display( view->shell(
          )->page(
                  title          = 'abap2UI5 - First Example'
-                 navbuttonpress = client->_event( val = 'BACK' s_ctrl = VALUE #( check_view_destroy = abap_true ) )
-                 shownavbutton = xsdbool( client->get( )-s_draft-id_prev_app_stack IS NOT INITIAL )
+                 navbuttonpress = client->_event( val = 'BACK' )
+                 shownavbutton = client->check_app_prev_stack( )
              )->simple_form( title = 'Form Title' editable = abap_true
                  )->content( 'form'
                      )->title( 'Input'
